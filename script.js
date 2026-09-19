@@ -335,7 +335,7 @@ Score: ${totalScore}/10
 
 ${grid}
 Think fast and play!
-https://balldle-one.vercel.app/`;
+https://quizballquiz.vercel.app/`;
 
       document.getElementById('share-text').innerText = shareTemplate;
     }
