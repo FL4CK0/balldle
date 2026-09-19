@@ -346,3 +346,33 @@ https://balldle-one.vercel.app/`;
         alert("Results copied to clipboard! Share with your friends.");
       });
     }
+
+    // Keyboard Shortcuts Listener
+document.addEventListener('keydown', (e) => {
+  // Prevent default scrolling when Spacebar is pressed
+  if (e.code === 'Space') {
+    e.preventDefault();
+    const shootBtn = document.getElementById('shoot-btn');
+    const hoopScreen = document.getElementById('hoop-screen');
+    
+    // Trigger shoot if the hoop screen is active and the shoot button isn't disabled
+    if (hoopScreen && !hoopScreen.classList.contains('hidden') && !shootBtn.disabled) {
+      shootBall();
+    }
+  }
+
+  // Answer shortcuts: Keys '1', '2', '3', '4'
+  if (['1', '2', '3', '4'].includes(e.key)) {
+    const quizScreen = document.getElementById('quiz-screen');
+    
+    // Only process if the quiz screen is active
+    if (quizScreen && !quizScreen.classList.contains('hidden')) {
+      const optionIndex = parseInt(e.key, 10) - 1; // Map '1' -> 0, '2' -> 1, etc.
+      const buttons = document.querySelectorAll('#answer-buttons .btn');
+      
+      if (buttons[optionIndex] && !buttons[optionIndex].disabled) {
+        buttons[optionIndex].click();
+      }
+    }
+  }
+});
