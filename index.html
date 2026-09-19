@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThinkFast - Daily Trivia & Hoops</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>THINKFAST ⚡</h1>
+    <div class="subtitle" id="date-display"></div>
+
+    <div id="timer-wrapper" class="timer-container hidden">
+      <div id="timer-bar" class="timer-bar"></div>
+    </div>
+
+    <!-- START SCREEN -->
+    <div id="start-screen">
+      <p style="margin-bottom: 20px; line-height: 1.4;">
+        5 Questions. 5 Shots.<br>
+        <strong>5 SECONDS</strong> on the clock per round!<br>
+        <em>Warning: The hoop speeds up each round!</em>
+      </p>
+      <button class="btn" id="start-btn" style="width: 100%; background: #ff9f43;" onclick="startGame()" disabled>Loading Daily Trivia...</button>
+    </div>
+
+    <!-- SINGLE UNIFIED QUIZ & PREP VIEWPORT -->
+    <div id="quiz-screen" class="hidden">
+      <h3 class="screen-heading" id="question-text">GET READY! 🔥</h3>
+      <div class="btn-container" id="answer-buttons">
+        <!-- Placeholder buttons reserve exact space so screen stays locked -->
+        <button class="btn dummy-btn">&nbsp;</button>
+        <button class="btn dummy-btn">&nbsp;</button>
+        <button class="btn dummy-btn">&nbsp;</button>
+        <button class="btn dummy-btn">&nbsp;</button>
+      </div>
+    </div>
+
+    <!-- BASKETBALL SCREEN -->
+    <div id="hoop-screen" class="hidden">
+      <h3>Buzzer Beater!</h3>
+      <div id="speed-badge" class="speed-badge">Speed: Level 1</div>
+      <p style="font-size: 0.8rem; color: #a4b0be; margin-top: 4px;">Time your release before the 5s runs out!</p>
+      
+      <div id="court">
+        <div class="arena-glow l"></div>
+        <div class="arena-glow r"></div>
+        <div class="three-arc"></div>
+        <div class="key-line"></div>
+        <div class="court-floor"></div>
+
+        <div id="hoop">
+          <div class="backboard"></div>
+          <div class="rim"></div>
+          <svg class="net-svg" viewBox="0 0 42 34" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,0 L8,30 M10,0 L13,32 M18,0 L18,33 M26,0 L23,32 M32,0 L28,30
+                     M2,0 Q21,6 40,0
+                     M4,8 Q21,13 38,8
+                     M6,16 Q21,20 36,16
+                     M8,24 Q21,27 34,24"/>
+          </svg>
+        </div>
+
+        <div id="ball">
+          <div class="seam-h"></div>
+          <div class="seam-v"></div>
+          <div class="seam-l"></div>
+          <div class="seam-r"></div>
+        </div>
+      </div>
+
+      <div class="feedback" id="shot-feedback"></div>
+      <button class="btn" id="shoot-btn" onclick="shootBall()">SHOOT!</button>
+    </div>
+
+    <!-- END SCREEN -->
+    <div id="end-screen" class="hidden">
+      <h2>Game Complete!</h2>
+      <p id="final-score" style="margin: 10px 0; font-size: 1.2rem;"></p>
+      <div class="result-box" id="share-text"></div>
+      <button class="btn" style="width:100%; background:#70a1ff;" onclick="copyResults()">Copy Results 📋</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
