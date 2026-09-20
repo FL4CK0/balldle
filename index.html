@@ -24,6 +24,7 @@
         <em>Warning: The hoop speeds up each round!</em>
       </p>
       <button class="btn" id="start-btn" style="width: 100%; background: #ff9f43;" onclick="startGame()" disabled>Loading Daily Trivia...</button>
+      <button class="btn how-to-play-btn" onclick="toggleHowToPlay(true)">❔ How to Play</button>
     </div>
 
     <!-- SINGLE UNIFIED QUIZ & PREP VIEWPORT -->
@@ -81,6 +82,26 @@
       <p id="final-score" style="margin: 10px 0; font-size: 1.2rem;"></p>
       <div class="result-box" id="share-text"></div>
       <button class="btn" style="width:100%; background:#70a1ff;" onclick="copyResults()">Copy Results 📋</button>
+    </div>
+  </div>
+
+  <!-- HOW TO PLAY MODAL -->
+  <div id="how-to-play-modal" class="modal-overlay hidden" onclick="closeHowToPlayOnOverlay(event)">
+    <div class="modal-box">
+      <h2>How to Play 🏀</h2>
+      <ul class="modal-list">
+        <li>Answer <strong>5 trivia questions</strong>, one at a time.</li>
+        <li>You get <strong>5 seconds</strong> per question — pick fast!</li>
+        <li>After each question, take a buzzer-beater shot at the moving hoop.</li>
+        <li>The hoop gets <strong>faster</strong> after every round.</li>
+        <li>Score up to <strong>10 points</strong> total (5 trivia + 5 shots).</li>
+      </ul>
+      <h3 class="modal-subheading">Keyboard Shortcuts</h3>
+      <ul class="modal-list">
+        <li><strong>1 – 4</strong> — choose an answer</li>
+        <li><strong>Space</strong> — take your shot</li>
+      </ul>
+      <button class="btn" style="width:100%; background:#70a1ff;" onclick="toggleHowToPlay(false)">Got it!</button>
     </div>
   </div>
 

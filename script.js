@@ -147,6 +147,16 @@ function getDailyQuestions(pool) {
       document.getElementById('timer-bar').style.width = Math.max(0, percentage) + '%';
     }
 
+    function toggleHowToPlay(show) {
+      document.getElementById('how-to-play-modal').classList.toggle('hidden', !show);
+    }
+
+    function closeHowToPlayOnOverlay(e) {
+      if (e.target.id === 'how-to-play-modal') {
+        toggleHowToPlay(false);
+      }
+    }
+
     /* GAME START & PREP PHASE */
     function startGame() {
       if (!dailyQuestions.length) return;
@@ -187,7 +197,17 @@ function getDailyQuestions(pool) {
       q.options.forEach((opt, idx) => {
         const btn = document.createElement('button');
         btn.className = 'btn';
-        btn.innerText = opt;
+
+        const keyNum = document.createElement('span');
+        keyNum.className = 'key-num';
+        keyNum.textContent = idx + 1;
+
+        const label = document.createElement('span');
+        label.className = 'btn-label';
+        label.textContent = opt;
+
+        btn.appendChild(keyNum);
+        btn.appendChild(label);
         btn.onclick = () => handleAnswer(idx);
         btnContainer.appendChild(btn);
       });

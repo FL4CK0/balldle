@@ -88,7 +88,39 @@
       line-height: 1.3;
       overflow-wrap: break-word;
       word-break: break-word;
+      position: relative;
       transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
+    }
+
+    .key-num {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .btn-label {
+      pointer-events: none;
+    }
+
+    .how-to-play-btn {
+      width: 100%;
+      margin-top: 10px;
+      background: transparent;
+      border: 2px solid #4e4e75;
+      color: #a4b0be;
+      font-size: 0.85rem;
+      padding: 9px 16px;
+    }
+    .how-to-play-btn:hover {
+      background: #33334a;
+      border-color: #ff9f43;
+      color: #fff;
     }
 
     .btn:hover:not(:disabled) {
@@ -400,4 +432,70 @@
       body {
         align-items: flex-start;
       }
+    }
+
+
+    /* ============ HOW TO PLAY MODAL ============ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding: 20px;
+    }
+
+    .modal-box {
+      background: #27273a;
+      width: 100%;
+      max-width: 360px;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      text-align: left;
+    }
+
+    .modal-box h2 {
+      color: #ff9f43;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .modal-subheading {
+      color: #ff9f43;
+      font-size: 0.95rem;
+      margin: 14px 0 8px;
+    }
+
+    .modal-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .modal-list li {
+      font-size: 0.88rem;
+      line-height: 1.4;
+      color: #d8dce6;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .modal-list li::before {
+      content: '•';
+      position: absolute;
+      left: 4px;
+      color: #ff9f43;
+    }
+
+    .modal-box .btn {
+      margin-top: 16px;
     }
