@@ -28,6 +28,22 @@ document.getElementById('date-display').innerText = new Date().toLocaleDateStrin
     let onTimeoutHandler = null;
 
 
+// Keeps the question box the exact same height for every question. Instead
+// of letting long questions overflow (which pushes/crowds the rest of the
+// UI), we just dial the font size down a notch based on text length so the
+// answer buttons always land in the same spot.
+function fitQuestionText(text) {
+  const qText = document.getElementById('question-text');
+  qText.classList.remove('text-md', 'text-sm');
+
+  const len = text.length;
+  if (len > 95) {
+    qText.classList.add('text-sm');
+  } else if (len > 55) {
+    qText.classList.add('text-md');
+  }
+}
+
 function getSeedForDate(dateString) {
   let hash = 0;
   for (let i = 0; i < dateString.length; i++) {
@@ -140,6 +156,7 @@ function getDailyQuestions(pool) {
       const qText = document.getElementById('question-text');
       qText.style.color = '#ff9f43';
       qText.innerText = 'Get ready...Questions will appear here';
+      fitQuestionText(qText.innerText);
 
       // Keep screen layout locked using dummy transparent buttons
       const btnContainer = document.getElementById('answer-buttons');
@@ -162,6 +179,7 @@ function getDailyQuestions(pool) {
       const qText = document.getElementById('question-text');
       qText.style.color = '#fff';
       qText.innerText = `Q${currentQ + 1}: ${q.q}`;
+      fitQuestionText(qText.innerText);
       
       const btnContainer = document.getElementById('answer-buttons');
       btnContainer.innerHTML = '';
